@@ -1,6 +1,6 @@
 if !exists('g:plugin_group')
     let g:plugin_group = ['basic', 'textobj', 'filetypes']
-    let g:plugin_group += ['airline', 'nerdtree', 'ale', 'tags', 'echodoc']
+    let g:plugin_group += ['airline', 'nerdtree', 'ale', 'tags', 'echodoc', 'copilot']
 endif
 
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
@@ -15,10 +15,26 @@ call plug#begin("~/.config/nvim/plugged")
 
 
 if index(g:plugin_group, 'basic') >= 0
-    " Plug 'vim-scripts/AutoComplPop'
+    Plug 'vim-scripts/AutoComplPop'
     Plug 'flazz/vim-colorschemes'
 endif
 
+if index(g:plugin_group, 'copilot') >= 0
+    Plug 'github/copilot.vim'
+
+    let g:copilot_filetypes = {
+                \ '*': v:false,
+                \ 'c': v:true,
+                \ 'cpp': v:true,
+                \ 'c++': v:true,
+                \ 'python': v:true,
+                \ 'go': v:true,
+                \ 'verilog': v:true,
+                \ 'vhdl': v:true,
+                \ }
+    imap <silent><script><expr> <C-,> copilot#Accept("\<CR>")
+    let g:copilot_no_tab_map = v:true
+endif
 
 if index(g:plugin_group, 'textobj') >= 0
 
