@@ -95,7 +95,7 @@ if executable('ag')
 endif
 
 cnoreabbrev Ack Ack!
-map <F4> :Ack <CR>
+nnoremap <F4> :Ack<CR>
 
 "
 nnoremap <Leader>t <C-t>

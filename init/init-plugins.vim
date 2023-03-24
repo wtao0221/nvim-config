@@ -17,6 +17,7 @@ call plug#begin("~/.config/nvim/plugged")
 if index(g:plugin_group, 'basic') >= 0
     Plug 'vim-scripts/AutoComplPop'
     Plug 'flazz/vim-colorschemes'
+    Plug 'mileszs/ack.vim'
 endif
 
 if index(g:plugin_group, 'copilot') >= 0
