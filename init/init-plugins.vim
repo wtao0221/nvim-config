@@ -32,7 +32,7 @@ if index(g:plugin_group, 'copilot') >= 0
                 \ 'verilog': v:true,
                 \ 'vhdl': v:true,
                 \ }
-    imap <silent><script><expr> <C-,> copilot#Accept("\<CR>")
+
     let g:copilot_no_tab_map = v:true
 endif
 
@@ -254,7 +254,7 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
+let g:ycm_key_invoke_completion = '<c-g>'
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 set completeopt=menu,menuone,noselect
 

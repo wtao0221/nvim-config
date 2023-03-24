@@ -7,10 +7,10 @@ noremap <C-h> <left>
 noremap <C-j> <down>
 noremap <C-k> <up>
 noremap <C-l> <right>
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
+" inoremap <C-h> <left>
+" inoremap <C-j> <down>
+" inoremap <C-k> <up>
+" inoremap <C-l> <right>
 
 
 "----------------------------------------------------------------------
@@ -101,3 +101,9 @@ map <F4> :Ack <CR>
 nnoremap <Leader>t <C-t>
 nnoremap <Leader>o <C-o>
 nnoremap <Leader>] <C-]>
+
+" copilot
+imap <C-k> <Plug>(copilot-dismiss)
+imap <C-h> <Plug>(copilot-next)
+imap <C-l> <Plug>(copilot-previous)
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
