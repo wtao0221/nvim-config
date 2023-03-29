@@ -103,7 +103,7 @@ nnoremap <Leader>o <C-o>
 nnoremap <Leader>] <C-]>
 
 " copilot
-imap <C-k> <Plug>(copilot-dismiss)
-imap <C-h> <Plug>(copilot-next)
-imap <C-l> <Plug>(copilot-previous)
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+inoremap <C-k> <Plug>(copilot-dismiss)
+inoremap <C-h> <Plug>(copilot-next)
+inoremap <C-l> <Plug>(copilot-previous)
+inoremap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
