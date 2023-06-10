@@ -12,6 +12,9 @@ sudo apt install -y libtool libtool-bin unzip gettext silversearcher-ag ctags so
 https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-source
 
 ```
+
+pip3 install pynvim
+
 # build from source
 git clone git@github.com:neovim/neovim.git
 cd neovim
