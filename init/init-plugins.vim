@@ -1,6 +1,7 @@
 if !exists('g:plugin_group')
     let g:plugin_group = ['basic', 'textobj', 'filetypes']
     let g:plugin_group += ['airline', 'nerdtree', 'ale', 'tags', 'echodoc', 'copilot']
+    " let g:plugin_group += ['lsp']
 endif
 
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
@@ -95,35 +96,35 @@ if index(g:plugin_group, 'tags') >= 0
     " <leader>cc 查看哪些函数调用
     " <leader>cf 查看光标下的文件
     " <leader>ci 查看include本文件的文件
-    Plug 'skywind3000/gutentags_plus'
+    " Plug 'skywind3000/gutentags_plus'
 
-    let $GTAGSLABEL = 'native-pygments'
-    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+    " let $GTAGSLABEL = 'native-pygments'
+    " let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
     " project root files
     let g:gutentags_project_root = ['.root', '.project', '.svn', '.git', '.hg']
     let g:gutentags_ctags_tagfile = '.tags'
 
     " tag cached in ~/.cache/tags
-    let g:gutentags_cache_dir = expand('~/.cache/tags')
-
     let s:vim_tags = expand('~/.cache/tags')
-    if !isdirectory(s:vim_tags) 
+    let g:gutentags_cache_dir = s:vim_tags
+
+    if !isdirectory(s:vim_tags)
         silent! call mkdir(s:vim_tags, 'p')
     endif
 
-    let g:gutentags_modules = [] 
+    let g:gutentags_modules = []
 
     if executable('ctags')
         let g:gutentags_modules += ['ctags']
     endif
 
-    if executable('gtags') && executable('gtags-cscope')
-        let g:gutentags_modules += ['gtags_cscope']
-    endif
+    " if executable('gtags') && executable('gtags-cscope')
+    "     let g:gutentags_modules += ['gtags_cscope']
+    " endif
 
     " ctags settings
     let g:gutentags_ctags_extra_args = []
-    let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+    let g:gutentags_ctags_extra_args += ['--fields=+niazS', '--extra=+q']
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
@@ -236,6 +237,13 @@ if index(g:plugin_group, 'ale') >= 0
     endif
 endif
 
+if index(g:plugin_group, 'lsp') >= 0
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+    Plug 'neovim/nvim-lspconfig'
+endif
+
+
 "----------------------------------------------------------
 " YCM
 "----------------------------------------------------------
@@ -255,6 +263,7 @@ let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings=1
+let g:ycm_clangd_args=['--header-insertion=never']
 let g:ycm_key_invoke_completion = '<c-g>'
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/bundle/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 set completeopt=menu,menuone,noselect
@@ -299,6 +308,7 @@ let g:ycm_filetype_whitelist = {
             \ "vb":1,
             \ "make":1,
             \ "cmake":1,
+            \ "tcl":1,
             \ "html":1,
             \ "css":1,
             \ "less":1,
