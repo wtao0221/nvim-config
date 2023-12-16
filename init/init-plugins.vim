@@ -1,7 +1,6 @@
 if !exists('g:plugin_group')
     let g:plugin_group = ['basic', 'textobj', 'filetypes']
     let g:plugin_group += ['airline', 'nerdtree', 'ale', 'tags', 'echodoc', 'copilot']
-    " let g:plugin_group += ['lsp']
 endif
 
 let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h:h')
@@ -11,12 +10,12 @@ function! s:path(path)
     return substitute(path, '\\', '/', 'g')
 endfunc
 
-" Plugins installed to ~/.vim/plugged
+" Plugins installed to ~/.config/nvim/plugged
 call plug#begin("~/.config/nvim/plugged")
 
 
 if index(g:plugin_group, 'basic') >= 0
-    Plug 'vim-scripts/AutoComplPop'
+    " Plug 'vim-scripts/AutoComplPop'
     Plug 'flazz/vim-colorschemes'
     Plug 'mileszs/ack.vim'
 endif
@@ -128,7 +127,7 @@ if index(g:plugin_group, 'tags') >= 0
     let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
     let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-    " let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+    let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
     let g:gutentags_auto_add_gtags_cscope = 0
 
